@@ -1,0 +1,67 @@
+package news360SiteTests;
+
+import static org.testng.Assert.assertEquals;
+
+import org.junit.runners.Parameterized;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import news360Site.HomePage;
+import news360Site.WebDriverFunctions;
+
+public class SignInWithEmailTest extends TestBaseClass {
+
+	@BeforeTest
+	public void setUp() {
+
+		super.setUp("http://news360.com");
+	}
+
+	//@AfterTest
+	//public void TearDown() {
+	//	super.tearDown();
+	//}
+
+	@DataProvider(name = "invalidLogin")
+	public static Object[][] invalidLogin() {
+		return new Object[][] { 
+			{ "", "", "This value is required." },
+			{"", "", "This value is required."},
+			{"", "", "This value is required."}
+			};
+	}
+
+	@Test(dataProvider = "invalidLogin")
+	public void InvalidLoginTests(String email, String password, String expectedResult) {
+		setUp("http://news360.com");
+		// @Test
+		// @Parameters({ "empty", "", "This value is required." })
+		// public void InvalidLoginTests(String email, String password, String
+		// expectedResult ) {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		HomePage homePage = new HomePage(driver);
+		homePage.signInWithEmail();
+		homePage.enterSignInEmail(email);
+		homePage.enterSignInPassword(password);
+		homePage.clickSignInButton();
+
+		wf.waitForElement(driver, 10, homePage.requiredEmailText);
+		String requiredEmailText = homePage.getRequiredEmailText().getText();
+		Assert.assertEquals(requiredEmailText, expectedResult);
+		/*
+		 * try { if (email == "") { wf.waitForElement(driver, 10,
+		 * homePage.requiredEmailText); String requiredEmailText =
+		 * homePage.getRequiredEmailText().getText();
+		 * Assert.assertEquals(requiredEmailText, expectedResult); } else {
+		 * wf.waitForElement(driver, 10, homePage.errorMessage); String errorMessage =
+		 * homePage.getErrorMessageText().getText(); Assert.assertEquals(errorMessage,
+		 * expectedResult); } } catch (ElementNotInteractableException e) {
+		 * System.out.println(e); }
+		 */
+		tearDown();
+	}
+}

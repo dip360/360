@@ -1,0 +1,19 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+	WebDriver driver;
+
+	By startReadingButton = By.xpath("//a[@class='eNav startreading ng-binding']");
+
+	public WebElement getStartReadingButton() {
+		return driver.findElement(startReadingButton);
+	}
+
+	public void startReading() {
+		getStartReadingButton().click();
+	}
+}

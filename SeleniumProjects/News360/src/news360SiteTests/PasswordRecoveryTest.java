@@ -1,0 +1,88 @@
+package news360SiteTests;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import news360Site.AccountPage;
+import news360Site.HomePage;
+import news360Site.LoginEmail;
+import news360Site.ResetPasswordPage;
+import news360Site.WebDriverFunctions;
+import news360Site.WelcomePage;
+
+public class PasswordRecoveryTest extends TestBaseClass {
+
+	@BeforeTest
+	public void SetUp() throws Exception {
+
+		super.setUp("http://news360.com");
+	}
+
+	@AfterTest
+	public void TearDown() {
+		super.tearDown();
+	}
+
+	@Test
+	public void RecoverPasswordTest() throws Exception {
+		/**
+		 * This tests password recovery process For validation, this test verifies the
+		 * password is reset and login news360 with the new password, then empty the
+		 * email inbox and get ready for next run
+		 */
+
+		// setting up page objects relevant to the password recovery process
+		HomePage homePage = new HomePage(driver);
+		LoginEmail gmail = new LoginEmail(driver);
+		ResetPasswordPage resetPassword = new ResetPasswordPage(driver);
+		WelcomePage welcomePage = new WelcomePage(driver);
+		AccountPage accountPage = new AccountPage(driver);
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+
+		// start the password recovery process
+		homePage.signInWithEmail();
+		homePage.clickForgotPasswordLink();
+		resetPassword.enterResetEmail("dipautotest360@gmail.com");
+		resetPassword.clickResetPassword();
+
+		// verify password is reset successfully
+		Assert.assertEquals(resetPassword.getResetPasswordConfirmationText().getText(),
+				"We emailed you a link to reset your password", "Confirmation Text not found");
+
+		// login gmail and retrieve reset password link
+		driver.get("https://mail.google.com/mail/?ui=html");
+		String email = "dipautotest360@gmail.com";
+		String password = "^Test1234$$$^";
+		gmail.loginGmail(email, password);
+		gmail.clickFirstGmailMessage();
+		gmail.clickResetPasswordLink();
+
+		// switch to the tab for password reset
+		wf.switchToTab(driver, 2, 1);
+
+		// go through the password reset process by entering the required fields
+		String newPassword = wf.generateTimeStamp();
+		resetPassword.enterPassword(newPassword);
+		resetPassword.enterConfirmPassword(newPassword);
+		resetPassword.clickSavePassword();
+
+		// verify that account can be signed in with the new password
+		homePage.enterSignInEmail(email);
+		homePage.enterSignInPassword(newPassword);
+		homePage.clickSignInButton();
+
+		// verify the account name and logout
+		welcomePage.clickAccountName();
+		accountPage.clickLogoutButton();
+
+		// switch to the first tab and delete email
+		wf.switchToTab(driver, 2, 0);
+		gmail.deleteGmailMessage();
+
+		// print out new password for reference
+		System.out.println("New Password: " + newPassword);
+
+	}
+}

@@ -1,0 +1,55 @@
+package news360SiteTests;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import news360Site.HomePage;
+import news360Site.WebDriverFunctions;
+
+public class SignUpTest extends TestBaseClass {
+
+	@BeforeTest
+	public void setUp() {
+		super.setUp("http://news360.com");
+	}
+
+	@AfterTest
+	public void tearDown()
+	{
+		super.tearDown();
+	}
+	@Test
+	public void startReading() {
+		HomePage homePage = new HomePage(driver);
+		homePage.startReading();
+
+	}
+	
+	@DataProvider(name = "invalidSignUp")
+	public static Object[][] invalidSignUp() {
+		return new Object[][] { { "", "", "This value is required." }, { "abc", "", "Invalid login or password" },
+				{ "abc", "abc", "Invalid login or password" }, { "", "abc", "This value is required." } };
+	}
+
+	@Test(dataProvider = "invalidSignUp")
+	public void InvalidSignUpTests(String email, String password, String expectedResult) throws Exception {
+
+		HomePage homePage = new HomePage(driver);
+		homePage.signInWithEmail();
+		homePage.ClickSignUpLink();
+		homePage.enterSignInEmail(email);
+		homePage.enterSignInPassword(password);
+		homePage.clickSignInButton();
+
+		if (email == "") {
+			Assert.assertEquals(homePage.getRequiredEmailText().getText(), expectedResult);
+		} else {
+			Assert.assertEquals(homePage.getErrorMessageText().getText(), expectedResult);
+		}
+		driver.get("http://news360.com");
+
+	}
+}

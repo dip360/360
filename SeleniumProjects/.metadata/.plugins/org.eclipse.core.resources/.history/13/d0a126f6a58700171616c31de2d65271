@@ -1,0 +1,47 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class ResetPasswordPage {
+
+	WebDriver driver;
+	
+	public ResetPasswordPage(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+	
+	By resetPasswordTextBox = By.xpath("//input[@class='password textbox']");
+	By confirmPasswordTextBox = By.xpath("//input[@class='confirmpassword textbox']");
+	By savePasswordButton = By.xpath("//button[text()='Save password']");
+	
+	
+	private WebElement getResetPasswordTextbox()
+	{
+		return driver.findElement(resetPasswordTextBox);
+	}
+	
+	public void enterPassword(String password) {
+		getResetPasswordTextbox().sendKeys(password);
+	}
+	
+	private WebElement getConfirmPasswordTextbox()
+	{
+		return driver.findElement(confirmPasswordTextBox);
+	}
+	public void enterConfirmPassword(String confirmPassword)
+	{
+		getConfirmPasswordTextbox().sendKeys(confirmPassword);
+	}
+	
+	private WebElement getSavePasswordButton()
+	{
+		return driver.findElement(savePasswordButton);
+	}
+	public void clickSavePassword()
+	{
+		getSavePasswordButton().click();
+	}
+}

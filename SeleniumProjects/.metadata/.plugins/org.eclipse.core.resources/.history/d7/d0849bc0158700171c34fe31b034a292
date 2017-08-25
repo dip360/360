@@ -1,0 +1,22 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+	WebDriver driver;
+	
+	By startReadingButton = By.name("");
+
+	public WebElement getStartReadingButton()
+	{
+		return driver.findElement(By.xpath(""));
+	}
+	
+	public void startReading()
+	{
+	 getStartReadingButton().click();
+	}
+}
+

@@ -1,0 +1,93 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class SignUpPage {
+
+WebDriver driver;
+	
+	//Constructor
+	public SignUpPage(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+
+	By startReadingButton = By.xpath("//a[@class='eNav startreading ng-binding']");
+	By signUpEmailTextBox = By.xpath("//input[@id='signupemail']");
+	By signUpPasswordTextBox = By.xpath("//input[@id='password']");
+	By signUpConfirmPasswordTextBox = By.xpath("//form[@class='signup ng-pristine ng-valid'][1]//fieldset//input[@class='confirmpassword textbox']");
+	By signUpButton = By.xpath("//button[text()='Sign up']");
+	By signUpLink = By.xpath("//a[text()='Sign up']");
+	public By requiredEmailText = By.xpath("//form[@class='signup ng-pristine ng-valid'][1]//li[@class='required'][1]");
+	public By requiredPasswordText = By.xpath("//form[@class='signup ng-pristine ng-valid'][2]//li[@class='required'][2]");
+	public By requiredConfirmPasswordText = By.xpath("//form[@class='signup ng-pristine ng-valid'][3]//li[@class='required'][3]");
+	public By passwordTooShort = By.xpath("//li[@class='minlength']");
+	public By errorMessage = By.xpath("//div[text()='Invalid login or password']");
+
+	private WebElement getStartReadingButton() {
+		return driver.findElement(startReadingButton);
+	}
+
+	public void startReading() {
+		getStartReadingButton().click();
+	}
+	
+	
+	private WebElement getSignUpButton() {
+		return driver.findElement(signUpButton);
+	}
+	public void clickSignUpButton() {
+		getSignUpButton().click();
+	}
+	
+	public WebElement getRequiredEmailText() {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		wf.waitForElement(driver, 10, requiredEmailText);
+		
+		return driver.findElement(requiredEmailText);
+	}
+	
+	public WebElement getErrorMessageText() {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		wf.waitForElement(driver, 10, errorMessage);	
+		return driver.findElement(errorMessage);
+	}
+	
+	private WebElement getSignUpLink() throws Exception{
+		return driver.findElement(signUpLink);
+	}
+	public void ClickSignUpLink() throws Exception{
+		getSignUpLink().click();
+	}
+	private WebElement getSignUpEmail() throws Exception{
+		return driver.findElement(signUpEmailTextBox);
+	}
+	
+	public void enterSignUpEmail(String email) throws Exception{
+		getSignUpEmail().sendKeys(email);
+	}
+	
+	private WebElement getPasswordTextBox()throws Exception{
+		return driver.findElement(signUpPasswordTextBox);
+	}
+	public void enterSignUpPassword(String password) throws Exception{
+		getPasswordTextBox().sendKeys(password);
+	}
+	private WebElement getConfirmTextBox() throws Exception{
+		return driver.findElement(signUpConfirmPasswordTextBox);
+	}
+	public void enterConfirmPassword(String password) throws Exception{
+		getConfirmTextBox().sendKeys(password);
+	}
+	public WebElement getRequiredPasswordText() throws Exception{
+		return driver.findElement(requiredPasswordText);
+	}
+	public WebElement getRequiredConfirmPasswordText() throws Exception{
+		return driver.findElement(requiredConfirmPasswordText);
+	}
+	public WebElement getPasswordTooShortText()throws Exception{
+		return driver.findElement(passwordTooShort);
+	}
+}

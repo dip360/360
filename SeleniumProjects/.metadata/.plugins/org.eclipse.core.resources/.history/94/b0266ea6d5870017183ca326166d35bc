@@ -1,0 +1,29 @@
+package news360SiteTests;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import news360Site.HomePage;
+
+public class SignInWithEmailTest extends TestBaseClass{
+
+	@BeforeTest
+	public void setUp() {
+		
+		super.setUp("http://news360.com");
+	}
+	
+	@DataProvider(name = "invalidLogin")
+	public static Object[][] logins() {
+		return new Object[][] { { "", "","" }, { 6, false }, { 19, true }, { 22, false }, { 23, true } };
+	}
+
+	@Test(dataProvider="invalidLogin")
+	public void InvalidLoginTests(String emai, String password, String expectedResult) {
+		HomePage homePage = new HomePage(driver);
+		homePage.enterSignInEmail(emai);
+		homePage.enterSignInPassword(password);
+		
+	}
+}

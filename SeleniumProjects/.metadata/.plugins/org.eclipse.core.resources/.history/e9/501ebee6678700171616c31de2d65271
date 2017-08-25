@@ -1,0 +1,9 @@
+package news360SiteTests;
+
+import org.testng.annotations.Test;
+
+public class SignUpTest {
+  @Test
+  public void f() {
+  }
+}

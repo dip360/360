@@ -1,0 +1,22 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class WelcomePage {
+
+WebDriver driver;
+	
+	public WelcomePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	By accountName = By.xpath("//span[@class='username ng-binding']");
+	
+	private WebElement getAccountNameLink() {
+		return driver.findElement(accountName);
+	}
+	public void clickAccountName() {
+		getAccountNameLink().click();
+	}
+}

@@ -1,0 +1,97 @@
+package news360SiteTests;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import news360Site.HomePage;
+import news360Site.SignUpPage;
+import news360Site.WebDriverFunctions;
+
+public class SignUpTest extends TestBaseClass {
+
+	@BeforeTest
+	public void setUp() {
+		super.setUp("http://news360.com");
+	}
+
+	@AfterTest
+	public void tearDown() {
+		super.tearDown();
+	}
+
+	@Test
+	public void startReading() {
+		HomePage homePage = new HomePage(driver);
+		homePage.startReading();
+
+	}
+
+	@DataProvider(name = "invalidSignUp")
+	public static Object[][] invalidSignUp() {
+		return new Object[][] { { "", "", "", "This value is required." },
+				{ "abc", "", "", "This value is required." }, { "abc", "abc", "", "This value is required." },
+				{ "abc", "abc123456", "abc", "This value should be the same."}, 
+				{"abc", "ab", "ab", "This value is too short. It should have 6 characters or more." } };
+	}
+
+	@Test(dataProvider = "invalidSignUp")
+	public void InvalidSignUpTests(String email, String password, String confirmPassword, String expectedResult)
+			throws Exception {
+
+		HomePage homePage = new HomePage(driver);
+		SignUpPage signUpPage = new SignUpPage(driver);
+		homePage.signInWithEmail();
+		homePage.ClickSignUpLink();
+		signUpPage.enterSignUpEmail(email);
+		signUpPage.enterSignUpPassword(password);
+		signUpPage.enterConfirmPassword(confirmPassword);
+		signUpPage.clickSignUpButton();
+
+		if (email == "") {
+			Assert.assertEquals(signUpPage.getRequiredEmailText().getText(), expectedResult);
+			Assert.assertEquals(signUpPage.getRequiredPasswordText().getText(), expectedResult);
+			Assert.assertEquals(signUpPage.getRequiredConfirmPasswordText().getText(), expectedResult);
+		} else if (email == "abc" && password == "" && confirmPassword == "") {
+			Assert.assertEquals(signUpPage.getRequiredValue("1").getText(), expectedResult);
+			Assert.assertEquals(signUpPage.getRequiredValue("2").getText(), expectedResult);
+		} else if (email == "abc" && password == "abc" && confirmPassword == "") {
+			Assert.assertEquals(signUpPage.getRequiredValue("1").getText(), expectedResult);
+		}else if (email == "abc" && password == "abc123456" && confirmPassword == "abc") {
+			Assert.assertEquals(signUpPage.getShouldBeTheSameText().getText(), expectedResult);
+		}else if (email == "abc" && password == "ab" && confirmPassword == "ab") {
+			Assert.assertEquals(signUpPage.getPasswordTooShortText().getText(), expectedResult);
+		}else {
+			Assert.assertEquals(signUpPage.getErrorMessageText().getText(), expectedResult);
+		}
+		driver.get("http://news360.com");
+
+	}
+	
+
+	@DataProvider(name = "signUpWithAccoutAlreadyExists")
+	public static Object[][] signUpWithAccoutAlreadyExists() {
+		return new Object[][] { { "dipautotest360@gmail.com", "test1234", "test1234", "Invalid login or password" }};
+	}
+
+	@Test(dataProvider = "signUpWithAccoutAlreadyExists")
+	public void signUpWithAccountAlreadyExists(String email, String password, String confirmPassword, String expectedResult)
+			throws Exception {
+
+		HomePage homePage = new HomePage(driver);
+		SignUpPage signUpPage = new SignUpPage(driver);
+		homePage.signInWithEmail();
+		homePage.ClickSignUpLink();
+		signUpPage.enterSignUpEmail(email);
+		signUpPage.enterSignUpPassword(password);
+		signUpPage.enterConfirmPassword(confirmPassword);
+		signUpPage.clickSignUpButton();
+
+		Assert.assertEquals(signUpPage.getErrorMessageText().getText(), expectedResult);
+		
+
+	}
+	
+}

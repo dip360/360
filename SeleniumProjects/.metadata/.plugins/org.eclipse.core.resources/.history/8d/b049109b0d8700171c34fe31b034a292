@@ -1,0 +1,9 @@
+package logins;
+
+import org.testng.annotations.Test;
+
+public class SingInWithEmails {
+  @Test
+  public void f() {
+  }
+}

@@ -1,0 +1,9 @@
+package logins;
+
+import org.testng.annotations.Test;
+
+public class SignUp {
+  @Test
+  public void f() {
+  }
+}

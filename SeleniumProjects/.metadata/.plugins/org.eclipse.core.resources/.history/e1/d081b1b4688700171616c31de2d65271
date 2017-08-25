@@ -1,0 +1,14 @@
+package news360SiteTests;
+
+import org.testng.annotations.Test;
+
+import news360Site.HomePage;
+
+public class SignUpTest extends TestBaseClass {
+  @Test
+  public void f() {
+	  HomePage homePage = new HomePage();
+	  homePage.startReading();
+	  
+  }
+}

@@ -1,0 +1,77 @@
+package news360SiteTests;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import news360Site.AccountPage;
+import news360Site.HomePage;
+import news360Site.LoginEmail;
+import news360Site.ResetPasswordPage;
+import news360Site.WebDriverFunctions;
+import news360Site.WelcomePage;
+
+public class PasswordRecoveryTest extends TestBaseClass {
+
+	@BeforeTest
+	public void setUp() throws Exception {
+
+		super.setUp("http://news360.com");
+	}
+
+	@AfterTest
+	public void tearDown() {
+		super.tearDown();
+	}
+
+	@Test
+	public void RecoverPasswordTest() throws Exception {
+		/**
+	      * This tests password recovery process
+	      * For validation, this test verifies the password is reset and login news360 with the new password
+	      */
+	     
+		HomePage homePage = new HomePage(driver);
+		LoginEmail gmail = new LoginEmail(driver);
+		ResetPasswordPage resetPassword = new ResetPasswordPage(driver);
+		WelcomePage welcomePage = new WelcomePage(driver);
+		AccountPage accountPage = new AccountPage(driver);
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+
+		homePage.signInWithEmail();
+		homePage.clickForgotPasswordLink();
+		resetPassword.enterResetEmail("dipautotest360@gmail.com");
+		resetPassword.clickResetPassword();
+		Assert.assertEquals(resetPassword.getResetPasswordConfirmationText().getText(),
+				"We emailed you a link to reset your password", "Confirmation Text not found");
+
+		// login gmail
+		driver.get("https://mail.google.com/mail/?ui=html");
+		String email = "dipautotest360@gmail.com";
+		String password = "^Test1234$$$^";
+		gmail.loginGmail(email, password);
+		gmail.clickFirstGmailMessage();
+		gmail.clickResetPasswordLink();
+
+		wf.switchToTab(driver, 2, 1);
+
+		String newPassword = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		resetPassword.enterPassword(newPassword);
+		resetPassword.enterConfirmPassword(newPassword);
+		resetPassword.clickSavePassword();
+		homePage.enterSignInEmail(email);
+		homePage.enterSignInPassword(newPassword);
+		homePage.clickSignInButton();
+		welcomePage.clickAccountName();
+		accountPage.clickLogoutButton();
+		wf.switchToTab(driver, 2, 0);
+		// driver.switchTo().window(news360Tab.get(0));
+		gmail.deleteGmailMessage();
+		System.out.println("New Password: " + newPassword + "Test");
+
+	}
+}

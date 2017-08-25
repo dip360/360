@@ -1,0 +1,64 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class SignUpPage {
+
+WebDriver driver;
+	
+	//Constructor
+	public SignUpPage(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+
+	By startReadingButton = By.xpath("//a[@class='eNav startreading ng-binding']");
+	By singUpPasswordTextBox = By.xpath("//input[@name='password']");
+	By signUpButton = By.xpath("//button[text()='Sign Up']");
+	By signUpLink = By.linkText("Sign up");
+	public By requiredEmailText = By.xpath("//li[text()='This value is required.']");
+	public By errorMessage = By.xpath("//div[text()='Invalid login or password']");
+
+	private WebElement getStartReadingButton() {
+		return driver.findElement(startReadingButton);
+	}
+
+	public void startReading() {
+		getStartReadingButton().click();
+	}
+	
+	private WebElement getSignInPasswordTextBox() {
+		return driver.findElement(singUpPasswordTextBox);
+	}
+	public void enterSignInPassword(String password) {
+		getSignInPasswordTextBox().sendKeys(password);
+	}
+	private WebElement getSignInButton() {
+		return driver.findElement(signUpButton);
+	}
+	public void clickSignInButton() {
+		getSignInButton().click();
+	}
+	
+	public WebElement getRequiredEmailText() {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		wf.waitForElement(driver, 10, requiredEmailText);
+		
+		return driver.findElement(requiredEmailText);
+	}
+	
+	public WebElement getErrorMessageText() {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		wf.waitForElement(driver, 10, errorMessage);	
+		return driver.findElement(errorMessage);
+	}
+	
+	private WebElement getSignUpLink() throws Exception{
+		return driver.findElement(signUpLink);
+	}
+	public void ClickSignUpLink() throws Exception{
+		getSignUpLink().click();
+	}
+}

@@ -1,0 +1,116 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+	WebDriver driver;
+	
+	//Constructor
+	public HomePage(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+
+	By startReadingButton = By.xpath("//a[@class='eNav startreading ng-binding']");
+	By signInWithEmail = By.xpath(("//a[text()='Sign in with email']"));
+	By forgotYourPassword = By.xpath("//a[text()='Forgot your password?']");
+	By resetEmailTextbox = By.xpath("//input[@class='email textbox']");
+	By resetPasswordButton = By.xpath("//button[text()='Reset password']");
+	By signInEmailTextBox = By.xpath("//input[@id='signinemail']");
+	By singInPasswordTextBox = By.xpath("//input[@name='password']");
+	By signInButton = By.xpath("//button[text()='Sign in']");
+	By signUpLink = By.xpath("//span[@ng-bind='::localization.landing_forgot_password']/following-sibling::*");
+	public By requiredEmailText = By.xpath("//li[text()='This value is required.']");
+	public By errorMessage = By.xpath("//div[text()='Invalid login or password']");
+
+	private WebElement getStartReadingButton() {
+		return driver.findElement(startReadingButton);
+	}
+
+	public void startReading() {
+		getStartReadingButton().click();
+	}
+	
+	private WebElement getSignInWithEmailLink()
+	{
+		return driver.findElement(signInWithEmail);
+	}
+	
+	public void signInWithEmail()
+	{
+		getSignInWithEmailLink().click();
+	}
+	
+	private WebElement getForgotYourPasswordLink()
+	{
+		return driver.findElement(forgotYourPassword);
+	}
+	
+	public void clickForgotPasswordLink()
+	{
+		getForgotYourPasswordLink().click();
+	}
+	
+	private WebElement getResetEmailTextBox()
+	{
+		return driver.findElement(resetEmailTextbox);
+	}
+	
+	public void resetPasswordEmail(String email)
+	{
+		getResetEmailTextBox().sendKeys(email);
+	}
+	
+	private WebElement getResetPasswordButton()
+	{
+		return driver.findElement(resetPasswordButton);
+	}
+	
+	public void resetPassword()
+	{
+		getResetPasswordButton().click();
+	}
+	private WebElement getSignInEmailTextBox()
+	{
+		return driver.findElement(signInEmailTextBox);
+	}
+	public void enterSignInEmail(String email)
+	{
+		getSignInEmailTextBox().sendKeys(email);
+	}
+	
+	private WebElement getSignInPasswordTextBox() {
+		return driver.findElement(singInPasswordTextBox);
+	}
+	public void enterSignInPassword(String password) {
+		getSignInPasswordTextBox().sendKeys(password);
+	}
+	private WebElement getSignInButton() {
+		return driver.findElement(signInButton);
+	}
+	public void clickSignInButton() {
+		getSignInButton().click();
+	}
+	
+	public WebElement getRequiredEmailText() {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		wf.waitForElement(driver, 10, requiredEmailText);
+		
+		return driver.findElement(requiredEmailText);
+	}
+	
+	public WebElement getErrorMessageText() {
+		WebDriverFunctions wf = new WebDriverFunctions(driver);
+		wf.waitForElement(driver, 10, errorMessage);	
+		return driver.findElement(errorMessage);
+	}
+	
+	private WebElement getSignUpLink() throws Exception{
+		return driver.findElement(signUpLink);
+	}
+	public void ClickSignUpLink() throws Exception{
+		getSignUpLink().click();
+	}
+}

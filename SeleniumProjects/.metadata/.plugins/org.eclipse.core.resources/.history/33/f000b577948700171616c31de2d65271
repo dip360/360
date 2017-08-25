@@ -1,0 +1,22 @@
+package news360SiteTests;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import news360Site.HomePage;
+
+public class SignUpTest extends TestBaseClass {
+
+	@BeforeTest
+	public void setUp() {
+
+		super.setUp();
+	}
+
+	@Test
+	public void startReading() {
+		HomePage homePage = new HomePage(driver);
+		homePage.startReading();
+
+	}
+}

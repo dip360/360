@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="13" passed="13">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="91383" started-at="2017-08-25T07:51:13Z" finished-at="2017-08-25T07:52:44Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="91383" started-at="2017-08-25T07:51:13Z" finished-at="2017-08-25T07:52:44Z">
+      <class name="news360SiteTests.PasswordRecoveryTest">
+        <test-method status="PASS" signature="SetUp()[pri:0, instance:news360SiteTests.PasswordRecoveryTest@6a2bcfcb]" name="SetUp" is-config="true" duration-ms="9987" started-at="2017-08-25T00:51:13Z" finished-at="2017-08-25T00:51:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="PASS" signature="SetUp()[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="SetUp" is-config="true" duration-ms="7863" started-at="2017-08-25T00:51:23Z" finished-at="2017-08-25T00:51:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="PASS" signature="SetUp()[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="SetUp" is-config="true" duration-ms="9139" started-at="2017-08-25T00:51:31Z" finished-at="2017-08-25T00:51:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="PASS" signature="RecoverPasswordTest()[pri:0, instance:news360SiteTests.PasswordRecoveryTest@6a2bcfcb]" name="RecoverPasswordTest" duration-ms="16114" started-at="2017-08-25T00:52:24Z" finished-at="2017-08-25T00:52:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RecoverPasswordTest -->
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:news360SiteTests.PasswordRecoveryTest@6a2bcfcb]" name="TearDown" is-config="true" duration-ms="1674" started-at="2017-08-25T00:52:40Z" finished-at="2017-08-25T00:52:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="TearDown" is-config="true" duration-ms="1544" started-at="2017-08-25T00:52:41Z" finished-at="2017-08-25T00:52:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="TearDown" is-config="true" duration-ms="1408" started-at="2017-08-25T00:52:43Z" finished-at="2017-08-25T00:52:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+      </class> <!-- news360SiteTests.PasswordRecoveryTest -->
+      <class name="news360SiteTests.SignUpTest">
+        <test-method status="PASS" signature="InvalidSignUpTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="InvalidSignUpTests" duration-ms="2620" started-at="2017-08-25T00:51:57Z" data-provider="invalidSignUp" finished-at="2017-08-25T00:52:00Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[This value is required.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidSignUpTests -->
+        <test-method status="PASS" signature="InvalidSignUpTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="InvalidSignUpTests" duration-ms="3910" started-at="2017-08-25T00:52:00Z" data-provider="invalidSignUp" finished-at="2017-08-25T00:52:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[This value is required.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidSignUpTests -->
+        <test-method status="PASS" signature="InvalidSignUpTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="InvalidSignUpTests" duration-ms="3468" started-at="2017-08-25T00:52:04Z" data-provider="invalidSignUp" finished-at="2017-08-25T00:52:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[This value is required.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidSignUpTests -->
+        <test-method status="PASS" signature="InvalidSignUpTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="InvalidSignUpTests" duration-ms="3614" started-at="2017-08-25T00:52:07Z" data-provider="invalidSignUp" finished-at="2017-08-25T00:52:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abc123456]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[This value should be the same.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidSignUpTests -->
+        <test-method status="PASS" signature="InvalidSignUpTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="InvalidSignUpTests" duration-ms="3394" started-at="2017-08-25T00:52:11Z" data-provider="invalidSignUp" finished-at="2017-08-25T00:52:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ab]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[ab]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[This value is too short. It should have 6 characters or more.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidSignUpTests -->
+        <test-method status="PASS" signature="newSignUp()[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="newSignUp" duration-ms="6392" started-at="2017-08-25T00:52:14Z" finished-at="2017-08-25T00:52:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- newSignUp -->
+        <test-method status="PASS" signature="signUpWithAccountAlreadyExists(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignUpTest@1efbd816]" name="signUpWithAccountAlreadyExists" duration-ms="2803" started-at="2017-08-25T00:52:21Z" data-provider="signUpWithAccoutAlreadyExists" finished-at="2017-08-25T00:52:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[dipautotest360@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[test1234]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[test1234]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Invalid login or password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signUpWithAccountAlreadyExists -->
+      </class> <!-- news360SiteTests.SignUpTest -->
+      <class name="news360SiteTests.SignInWithEmailTest">
+        <test-method status="PASS" signature="InvalidLoginTests(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="InvalidLoginTests" duration-ms="2705" started-at="2017-08-25T00:51:40Z" data-provider="invalidLogin" finished-at="2017-08-25T00:51:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[This value is required.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidLoginTests -->
+        <test-method status="PASS" signature="InvalidLoginTests(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="InvalidLoginTests" duration-ms="3705" started-at="2017-08-25T00:51:43Z" data-provider="invalidLogin" finished-at="2017-08-25T00:51:46Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Invalid login or password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidLoginTests -->
+        <test-method status="PASS" signature="InvalidLoginTests(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="InvalidLoginTests" duration-ms="3628" started-at="2017-08-25T00:51:46Z" data-provider="invalidLogin" finished-at="2017-08-25T00:51:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Invalid login or password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidLoginTests -->
+        <test-method status="PASS" signature="InvalidLoginTests(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="InvalidLoginTests" duration-ms="3325" started-at="2017-08-25T00:51:50Z" data-provider="invalidLogin" finished-at="2017-08-25T00:51:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abc]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[This value is required.]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InvalidLoginTests -->
+        <test-method status="PASS" signature="SignInWithExistingEmail()[pri:0, instance:news360SiteTests.SignInWithEmailTest@66d2e7d9]" name="SignInWithExistingEmail" duration-ms="4017" started-at="2017-08-25T00:51:53Z" finished-at="2017-08-25T00:51:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SignInWithExistingEmail -->
+      </class> <!-- news360SiteTests.SignInWithEmailTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

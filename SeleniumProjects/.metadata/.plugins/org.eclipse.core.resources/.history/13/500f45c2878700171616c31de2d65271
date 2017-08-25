@@ -1,0 +1,47 @@
+package news360Site;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+	WebDriver driver;
+	
+	//Constructor
+	public HomePage(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+
+	By startReadingButton = By.xpath("//a[@class='eNav startreading ng-binding']");
+	By signInWithEmail = By.xpath(("//a[text()='Sign in with email']"));
+	By forgotYourPassword = By.xpath("//a[text()='Forgot your password?']");
+
+	public WebElement getStartReadingButton() {
+		return driver.findElement(startReadingButton);
+	}
+
+	public void startReading() {
+		getStartReadingButton().click();
+	}
+	
+	public WebElement getSignInWithEmailLink()
+	{
+		return driver.findElement(signInWithEmail);
+	}
+	
+	public void signInWithEmail()
+	{
+		getSignInWithEmailLink().click();
+	}
+	
+	public WebElement getForgotYourPasswordLink()
+	{
+		return driver.findElement(forgotYourPassword);
+	}
+	
+	public void forgotPassword()
+	{
+		getForgotYourPasswordLink().click();
+	}
+}

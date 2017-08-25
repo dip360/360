@@ -1,0 +1,32 @@
+package news360SiteTests;
+
+import static org.testng.Assert.assertEquals;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import news360Site.HomePage;
+
+public class SignInWithEmailTest extends TestBaseClass{
+
+	@BeforeTest
+	public void setUp() {
+		
+		super.setUp("http://news360.com");
+	}
+	
+	@DataProvider(name = "invalidLogin")
+	public static Object[][] logins() {
+		return new Object[][] { { "", "","This value is required." }, { "abc", "","This value is required." }, { "", "","This value is required." }, { "", "","This value is required." }, { "", "","This value is required."} };
+	}
+
+	@Test(dataProvider="invalidLogin")
+	public void InvalidLoginTests(String email, String password, String expectedResult) {
+		HomePage homePage = new HomePage(driver);
+		homePage.enterSignInEmail(email);
+		homePage.enterSignInPassword(password);
+	    Assert.assertEquals(expectedResult, homePage.getRequiredEmailText().getText());
+		
+	}
+}

@@ -1,0 +1,26 @@
+package news360SiteTests;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class TestBaseClass {
+	
+	public static WebDriver driver = null;
+	
+	public void setUp()
+	{
+		System.setProperty("webdriver.gecko.driver", "C:\\SeleniumProjects\\geckodriver.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		capabilities.setCapability("marionette", true);
+		
+		try {
+			driver = new FirefoxDriver();
+			driver.get("http://news360.com");
+		}catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+}

@@ -1,0 +1,14 @@
+package news360Site;
+
+import org.openqa.selenium.WebDriver;
+
+public class WelcomePage {
+
+	WebDriver driver;
+	
+	public WelcomePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	By 
+}

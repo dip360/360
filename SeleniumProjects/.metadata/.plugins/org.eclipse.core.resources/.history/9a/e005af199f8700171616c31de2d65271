@@ -1,0 +1,24 @@
+package news360SiteTests;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import news360Site.LoginEmail;
+
+public class ForgotPasswordTest extends TestBaseClass {
+
+	@BeforeTest
+	public void setUp() {
+
+		//super.setUp("http://mail.google.com");
+		super.setUp("https://mail.google.com/mail/?ui=html");
+	}
+
+	@Test
+	public void ResetPasswordTest() {
+		LoginEmail gmail = new LoginEmail(driver);
+		gmail.loginGmail("dipautotest360@gmail.com", "^Test1234$$$^");
+		gmail.clickFirstGmailMessage();
+
+	}
+}
